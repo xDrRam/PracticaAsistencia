@@ -82,7 +82,7 @@ namespace Asistencia
         private void txtBusqueda_KeyDown(object sender, KeyEventArgs e)
         {
 
-            // Verificamos si la tecla presionada fue enter
+            //enter
             if (e.KeyCode == Keys.Enter)
             {
                 //Obtenemos el texto del texbox y le quitamos los espacios
@@ -97,23 +97,23 @@ namespace Asistencia
                         //Comparamos
                         if (matriculaBuscar == matricula)
                         {
-                            //Validamos que este marcado y convertimos el valor a booleano en pocas palbras si esta marcada entra
+                            //Validamos
                             if (fila.Cells["Column1"].Value != null && Convert.ToBoolean(fila.Cells["Column1"].Value))
                             {
                                 //Desmarcamos la casilla
                                 fila.Cells["Column1"].Value = false;
-                                //Y le asignamos un color rojo
+                                //asignamos color rojo
                                 fila.DefaultCellStyle.BackColor = Color.LightCoral;
-                                //Limpiamos el txt para poder volver a escribir algo
+                                //Limpiamos
                                 txtBusqueda.Clear();
                                 return;
                             }
                         }
 
-                        //Marcamos la columna o el checkBox 
+                        //Marcamos el checkBox 
                         fila.Cells["Column1"].Value = true;
 
-                        //La pintamos de color verde para confirmar que asistio
+                        //color verde para confirmar que asistio
                         fila.DefaultCellStyle.BackColor = Color.LightGreen;
 
                         //Limpiamos el txt para poder volver a escribir algo
@@ -133,14 +133,12 @@ namespace Asistencia
                 bool marcado = fila.Cells["Column1"].Value != null && Convert.ToBoolean(fila.Cells["Column1"].Value);
 
                 if (marcado)
-                {
-                    // Un verde más suave o personalizado
+                {   
                     fila.DefaultCellStyle.BackColor = Color.FromArgb(192, 255, 192);
                     fila.DefaultCellStyle.ForeColor = Color.Black; // Color de la letra
                 }
                 else
                 {
-                    // Un rojo más suave
                     fila.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 204);
                     fila.DefaultCellStyle.ForeColor = Color.DarkRed;
                 }
@@ -168,7 +166,7 @@ namespace Asistencia
                 else
                     dt.ejecutarComando($"update Asistencia set asistio={valor} where idAlumno={idAlumno} and fecha='{fecha}'");
 
-                // Actualizar visuales en el hilo principal
+                //hilo
                 this.Invoke((MethodInvoker)delegate {
                     marcarAusencia();
                     actualizarContador();

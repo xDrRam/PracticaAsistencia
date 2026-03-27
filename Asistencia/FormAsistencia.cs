@@ -194,10 +194,10 @@ namespace Asistencia
 
             }
 
-            txtPresentes.Text = $"Presentes: {presentes}";
+            txtPresentes.Text = $"{presentes}";
             txtPresentes.ForeColor = Color.Green; // Texto en verde
 
-            txtAusentes.Text = $"Ausentes:  {ausentes}";
+            txtAusentes.Text = $"{ausentes}";
             txtAusentes.ForeColor = Color.Red;   // Texto en rojo
         }
         private void DgvAsistencia_CurrentCellDirtyStateChanged(object sender, EventArgs e)

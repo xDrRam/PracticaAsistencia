@@ -130,9 +130,20 @@ namespace Asistencia
         {
             foreach (DataGridViewRow fila in dgvAsistencia.Rows)
             {
-                //Guardamos en una variable si el checkbox esta marcado o no y convertimos el valor en booleano
                 bool marcado = fila.Cells["Column1"].Value != null && Convert.ToBoolean(fila.Cells["Column1"].Value);
-                fila.DefaultCellStyle.BackColor = marcado ? Color.LightGreen : Color.LightCoral;
+
+                if (marcado)
+                {
+                    // Un verde más suave o personalizado
+                    fila.DefaultCellStyle.BackColor = Color.FromArgb(192, 255, 192);
+                    fila.DefaultCellStyle.ForeColor = Color.Black; // Color de la letra
+                }
+                else
+                {
+                    // Un rojo más suave
+                    fila.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 204);
+                    fila.DefaultCellStyle.ForeColor = Color.DarkRed;
+                }
             }
         }
 
@@ -186,7 +197,10 @@ namespace Asistencia
             }
 
             txtPresentes.Text = $"Presentes: {presentes}";
+            txtPresentes.ForeColor = Color.Green; // Texto en verde
+
             txtAusentes.Text = $"Ausentes:  {ausentes}";
+            txtAusentes.ForeColor = Color.Red;   // Texto en rojo
         }
         private void DgvAsistencia_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {

@@ -1,0 +1,23 @@
+services:
+    mysql:
+        image: mysql:latest
+        container_name: mysql_asistencia
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: safe
+            MYSQL_DATABASE: asistencia_db
+            MYSQL_USER: andres
+            MYSQL_PASSWORD: safe
+        ports:
+            - "3306:3306"
+        volumes:
+          - mysql_data:/var/lib/mysql
+        command: --bind-address=0.0.0.0
+        networks:
+          - mysql_network
+volumes:
+     mysql_data:
+      driver: local
+networks:
+      mysql_network:
+       driver: bridge
